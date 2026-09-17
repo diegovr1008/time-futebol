@@ -6,7 +6,10 @@
 <ul>
     {% for time in times %}
         <li>
-            {{ time.nome }} — {{ time.get_status_display }}
+            {{ time.nome }} — Nota: {{ time.nota|default:"sem nota" }}
+            <br>
+            {{ time.descricao }}
+            <br>
             <a href="{% url 'editar' time.pk %}">Editar</a>
             <a href="{% url 'excluir' time.pk %}">Excluir</a>
         </li>
