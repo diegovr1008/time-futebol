@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'times/style.css' %}">
+
+<h2>Meu Catálogo de Times</h2>
+<a href="{% url 'logout' %}">Sair</a> | <a href="{% url 'adicionar' %}">Adicionar Time</a>
+<ul>
+    {% for time in times %}
+        <li>
+            {{ time.nome }} — {{ time.get_status_display }}
+            <a href="{% url 'editar' time.pk %}">Editar</a>
+            <a href="{% url 'excluir' time.pk %}">Excluir</a>
+        </li>
+    {% empty %}
+        <li>Nenhum time cadastrado ainda.</li>
+    {% endfor %}
+</ul>

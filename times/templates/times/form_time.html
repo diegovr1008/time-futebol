@@ -1,9 +1,10 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'times/style.css' %}">
 
-<h2>Login</h2>
+<h2>{{ titulo }}</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Entrar</button>
+    <button type="submit">Salvar</button>
 </form>
+<a href="{% url 'listar' %}">Voltar</a>

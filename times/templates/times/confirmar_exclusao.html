@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'times/style.css' %}">
+
+<h2>Excluir Time</h2>
+<p>Tem certeza que deseja excluir "{{ time.nome }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+</form>
+<a href="{% url 'listar' %}">Cancelar</a>

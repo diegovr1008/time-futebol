@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'times/style.css' %}">
+
 <h2>Criar conta</h2>
 <form method="post">
     {% csrf_token %}
