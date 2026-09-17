@@ -1,19 +1,29 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'times/style.css' %}">
 
-<h2>Meu Catálogo de Times</h2>
-<a href="{% url 'logout' %}">Sair</a> | <a href="{% url 'adicionar' %}">Adicionar Time</a>
-<ul>
-    {% for time in times %}
-        <li>
-            {{ time.nome }} — Nota: {{ time.nota|default:"sem nota" }}
-            <br>
-            {{ time.descricao }}
-            <br>
-            <a href="{% url 'editar' time.pk %}">Editar</a>
-            <a href="{% url 'excluir' time.pk %}">Excluir</a>
-        </li>
-    {% empty %}
-        <li>Nenhum time cadastrado ainda.</li>
-    {% endfor %}
-</ul>
+<div class="navbar">
+    <h1>⚽ Meu Catálogo de Times</h1>
+    <div>
+        <a href="{% url 'adicionar' %}">+ Adicionar Time</a>
+        <a href="{% url 'logout' %}">Sair</a>
+    </div>
+</div>
+
+<div class="container">
+    <ul class="catalogo">
+        {% for time in times %}
+            <li>
+                <div class="nome">{{ time.nome }}</div>
+                <span class="nota">Nota: {{ time.nota|default:"—" }}</span>
+                <div class="descricao">{{ time.descricao }}</div>
+                <div class="status">{{ time.get_status_display }}</div>
+                <div class="acoes">
+                    <a href="{% url 'editar' time.pk %}">Editar</a>
+                    <a href="{% url 'excluir' time.pk %}">Excluir</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>Nenhum time cadastrado ainda.</li>
+        {% endfor %}
+    </ul>
+</div>

@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 class Time(models.Model):
     STATUS_CHOICES = [
-        ('acompanho', 'Acompanho'),
-        ('quero_acompanhar', 'Quero acompanhar'),
-    ]
+    ('acompanho', 'Acompanho'),
+    ('nao_acompanho', 'Não acompanho'),
+]
 
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
